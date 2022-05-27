@@ -13,7 +13,7 @@ class Human {
     private isIllness: boolean;
     public isDie: boolean;
 
-    constructor(name, sex, age, stamina, power, healthLevel) {
+    constructor(name, sex, age = 18, stamina = 50, power = 21, healthLevel = 5000) {
         this.name = name;
         this.sex = sex;
         this.age = age;
