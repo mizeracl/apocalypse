@@ -2,17 +2,18 @@ import './illness';
 class Animal {
     public name: string;
     private age: number;
-    private healthLevel: any;
+    public healthLevel: any;
     private isIllness: boolean;
-    private stamina: number;
-    private power: number;
-    private paws: number | null;
-    private eyes: number | null;
+    public stamina: number;
+    public power: number;
+    public paws: number | null;
+    public eyes: number | null;
     public ears: number | null;
     public hearingAcuity: number | null;
+    public isVacсine: boolean = false;
     public isDie: boolean;
 
-    constructor(name, age = 0, healthLevel, stamina, power, paws, eyes, ears) {
+    constructor(name, age = 0, healthLevel, stamina, power, paws, eyes, ears, hearingAcuity) {
         this.name = name;
         this.age = age;
         this.healthLevel = healthLevel;
@@ -21,13 +22,14 @@ class Animal {
         this.paws = paws;
         this.eyes = eyes;
         this.ears = ears;
+        this.hearingAcuity = hearingAcuity;
     }
 
-    lessHealth(impact){
+    public lessHealth(impact){
         this.healthLevel - impact;
     }
 
-    addHealth(impact) {
+    public addHealth(impact) {
         this.healthLevel + impact;
     }
 
@@ -41,5 +43,9 @@ class Animal {
                 clearInterval(isIll);
             };
             }, illness.time);
+    }
+
+    setVaccine(){
+        this.isVacсine = true;
     }
 }
