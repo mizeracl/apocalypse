@@ -1,4 +1,5 @@
-import '../src/animal';
+import '../src/animals/dog';
+import '../src/animals/cat';
 import '../src/illness';
 
 class Human {
@@ -8,8 +9,9 @@ class Human {
     private stamina: number;
     private power: number;
     private healthLevel: number;
-    private pet: Animal;
+    private pet: Cat | Dog | null;
     private isIllness: boolean;
+    public isDie: boolean;
 
     constructor(name, sex, age, stamina, power, healthLevel) {
         this.name = name;
@@ -31,10 +33,20 @@ class Human {
     setIllness(illness: Illness) {
         this.isIllness = true;
         this.healthLevel -= illness.lostPointsHealth;
-        setInterval(()=> {this.healthLevel -= illness.lostPointsHealth}, illness.time);
+        let isIll = setInterval(()=> {
+            this.healthLevel -= illness.lostPointsHealth;
+            if (this.healthLevel<=0) {
+                this.isDie = true;
+                clearInterval(isIll);
+            };
+        }, illness.time);
     }
 
+    getPet(pet: Animal) {
+        this.pet = pet;
+    }
 
-
-
+    lostPet() {
+        this.pet = null;
+    }
 }

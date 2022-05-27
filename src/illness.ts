@@ -8,5 +8,6 @@ class Illness{
         this.time = time;
         this.lostPointsHealth = lostPointsHealth;
     }
+
 }
 
